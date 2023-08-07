@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlockedQueue.cpp" />
     <ClCompile Include="RequestHandler.cpp" />
     <ClCompile Include="task-30.7.1-20230728.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockedQueue.h" />
     <ClInclude Include="RequestHandler.h" />
     <ClInclude Include="ThreadPool.h" />
   </ItemGroup>

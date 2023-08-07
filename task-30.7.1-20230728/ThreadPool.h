@@ -16,24 +16,23 @@ typedef void (*FuncType) (int, int);
 class ThreadPool 
 {
 public:
-    // запуск
+    ThreadPool();
+    // запуск:
     void start();
-    // остановка
+    // остановка:
     void stop();
     // проброс задач
     void push_task(FuncType f, int id, int arg);
     // функция входа для потока
-    void threadFunc();
+    void threadFunc(int qindex);
 private:
+    // количество потоков
+    int m_thread_count;
     // потоки
     vector<thread> m_threads;
-    // поддержка синхронизации очереди
-    mutex m_locker;
-    // очередь задач
-    queue<task_type> m_task_queue;
-    // для синхронизации работы потоков
-    condition_variable m_event_holder;
-    // флаг для остановки работы потоков
-    volatile bool m_work;
+    // очереди задач для потоков
+    vector<BlockedQueue<task_type>> m_thread_queues;
+    // для равномерного распределения задач
+    int m_index;
 };
 
