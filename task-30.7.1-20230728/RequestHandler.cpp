@@ -10,7 +10,7 @@ RequestHandler::~RequestHandler()
 	m_tpool.stop();
 }
 
-void RequestHandler::pushRequest(FuncType f, int id, int arg) 
+void RequestHandler::pushRequest(FuncType f, int* array, int begin, int end)
 {
-	m_tpool.push_task(f, id, arg);
+	m_tpool.push_task(f, array, begin, end);
 }

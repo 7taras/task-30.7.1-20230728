@@ -10,7 +10,7 @@ using namespace std;
 typedef function<void()> task_type;
 
 // тип указатель на функцию, которая является эталоном для функций задач
-typedef void (*FuncType) (int, int);
+typedef void (*FuncType) (int*, int, int);
 
 // пул потоков
 class ThreadPool 
@@ -22,7 +22,7 @@ public:
     // остановка:
     void stop();
     // проброс задач
-    void push_task(FuncType f, int id, int arg);
+    void push_task(FuncType f, int* array, int begin, int end);
     // функция входа для потока
     void threadFunc(int qindex);
 private:
